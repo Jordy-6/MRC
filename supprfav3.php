@@ -3,7 +3,7 @@
         if(isset($_GET['id']) ){
             //on recupere $_GET['id']
             $id = $_GET['id'];
-            $sql = 'DELETE FROM favori_livre WHERE id_fav = :id';
+            $sql = 'DELETE FROM jr_favori_livre WHERE id_fav = :id';
             //Connexion a la bdd
             require 'bdd.php';
 

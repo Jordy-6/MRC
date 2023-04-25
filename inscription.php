@@ -51,7 +51,7 @@
 				<br>
 				<input type="submit" value="Inscription" name="envoyer">
 				</form>
-				<p>Vous avez déja un compte ? <a href="connexion.php">Connectez vous</a></p>
+				<p class = "co">Vous avez déja un compte ? <a href="connexion.php">Connectez vous</a></p>
 			</div>
 		</main>
 	</body>
@@ -60,40 +60,71 @@
 <?php
 	if(isset($_POST['envoyer'])){
 		// Si j'ai reçu le bouton de soumission, c'est que le formulaire a été envoyé.
+		 $email = trim($_POST['email']); //Recupère la valeur du champ 'mail' et trim supprime les espaces au debut et à la fin
+		 $pseudo = trim($_POST['pseudo']);
+		 $mdp = trim($_POST['mdp']);
+		 $mdp2 = trim($_POST['mdp2']);
+		 $erreur = false; //On considere qu'il n'y a pas d'erreur pas defaut
+	 
+		 if(empty($email)){
+			 echo '<p class="result" >Le champ email est vide</p>';
+			 $erreur = true; // Dès qu'on rencontre une erreur, on la passe à True
+		 }
 
-		if($_POST['mdp'] == $_POST['mdp2']){
-			// Si les deux mots de passe sont identiques
-			require_once 'bdd.php';
-			$sql = 'SELECT * FROM utilisateur WHERE email = :e';
-			$select = $co->prepare($sql);
-			$select->execute([
-				'e' => $_POST['email']
-			]);
+		 if(empty($pseudo)){
+			echo '<p class="result" >Le champ pseudo est vide</p>';
+			$erreur = true; // Dès qu'on rencontre une erreur, on la passe à True
+		}
+	 
+		 if(empty($mdp)){
+			 echo '<p class="result">Le champ mot de passe est vide</p>';
+			 $erreur = true;
+		 }
 
-			$utilisateur = $select->fetch(); // Récupère un résultat
-
-			if(!empty($utilisateur)){
-				echo '<p class="result">Cet utilisateur existe déjà</p>';
-			}
-			else{
-				$sql = 'INSERT INTO utilisateur (email, mdp, pseudo) VALUES(:e, :mdp, :p)';
-				$insert = $co->prepare($sql);
-				$insert->execute([
-					'e' => $_POST['email'],
-					'mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT),
-					'p' => $_POST['pseudo']
+		 if(empty($mdp2)){
+			echo '<p class="result">Le champ confirmation de mot de passe est vide</p>';
+			$erreur = true;
+		}
+		if($erreur == false){
+			if($_POST['mdp'] == $_POST['mdp2']){
+				// Si les deux mots de passe sont identiques
+				require_once 'bdd.php';
+				$sql = 'SELECT * FROM jr_utilisateur WHERE email = :e';
+				$select = $co->prepare($sql);
+				$select->execute([
+					'e' => $_POST['email']
 				]);
-
-				if($insert->rowCount() > 0){
-					echo '<p class="result">Inscription effectuée</p>';						
+	
+				$utilisateur = $select->fetch(); // Récupère un résultat
+	
+				if(!empty($utilisateur)){
+					echo '<p class="result">Cet utilisateur existe déjà</p>';
 				}
 				else{
-					echo '<p class="result">Veuillez réessayer votre inscription</p>';
+					$sql = 'INSERT INTO jr_utilisateur(email, mdp, pseudo) VALUES(:e, :mdp, :p)';
+					$insert = $co->prepare($sql);
+					$insert->execute([
+						'e' => $_POST['email'],
+						'mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT),
+						'p' => $_POST['pseudo']
+					]);
+	
+					if($insert->rowCount() > 0){
+						echo '<p class="result">Inscription effectuée</p>';						
+					}
+					else{
+						echo '<p class="result">Veuillez réessayer votre inscription</p>';
+					}
 				}
+			}
+			else{
+				echo '<p class="result">Les deux mots de passe ne sont pas identiques</p>';
 			}
 		}
 		else{
-			echo '<p class="result">Les deux mots de passe ne sont pas identiques</p>';
+			echo '<p class="result">Veuillez remplir les champs indiqués</p>';
 		}
+
+		
 	}
 ?>

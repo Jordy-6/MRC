@@ -32,7 +32,7 @@ session_start();
     <?php
         if(isset($_SESSION) && array_key_exists('role', $_SESSION)){
             if($_SESSION['role'] == 'admin'){
-                $sql = 'SELECT c.nom AS categorie, p.citation AS citation, p.id AS id FROM proposition p INNER JOIN categorie c ON c.id = p.categorie';
+                $sql = 'SELECT c.nom AS categorie, p.citation AS citation, p.id AS id FROM jr_proposition p INNER JOIN jr_categorie c ON c.id = p.categorie';
                 //Connexion a la bdd
                 require 'bdd.php';
 

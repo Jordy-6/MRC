@@ -40,7 +40,7 @@ require 'bdd.php';
             <select name="sujet" id="sujet">
                 <?php
 
-                    $sql = 'SELECT * FROM categorie';
+                    $sql = 'SELECT * FROM jr_categorie';
 
                     //Prepare l'insertion
                     $select = $co->prepare($sql);
@@ -89,7 +89,7 @@ require 'bdd.php';
             //S'il n'a pas d'erreurs
             if($erreur == false){
                 
-                $sql = 'INSERT INTO proposition(categorie,citation) VALUES (:s, :c)';
+                $sql = 'INSERT INTO jr_proposition(categorie,citation) VALUES (:s, :c)';
 
                 //Prepare l'insertion
                 $insert = $co->prepare($sql);

@@ -2,8 +2,8 @@
 session_start();
 
     if (array_key_exists('id' , $_SESSION)){
-        if($_SESSION['categorie'] == 'citation_serie'){
-            $sql = 'INSERT INTO favori_serie(id_utilisateur,id_citation) VALUES (:u, :e)';
+        if($_SESSION['categorie'] == 'jr_citation_serie'){
+            $sql = 'INSERT INTO jr_favori_serie(id_utilisateur,id_citation) VALUES (:u, :e)';
             require_once 'bdd.php';
             $insert = $co->prepare($sql);
             $insert->execute([
@@ -20,8 +20,8 @@ session_start();
             }
         }
 
-        else if($_SESSION['categorie'] == 'citation_film'){
-            $sql = 'INSERT INTO favori_film(id_utilisateur,id_citation) VALUES (:u, :e)';
+        else if($_SESSION['categorie'] == 'jr_citation_film'){
+            $sql = 'INSERT INTO jr_favori_film(id_utilisateur,id_citation) VALUES (:u, :e)';
             require_once 'bdd.php';
             $insert = $co->prepare($sql);
             $insert->execute([
@@ -40,8 +40,8 @@ session_start();
 
             }
         }
-        else if($_SESSION['categorie'] == 'citation_livre'){
-            $sql = 'INSERT INTO favori_livre(id_utilisateur,id_citation) VALUES (:u, :e)';
+        else if($_SESSION['categorie'] == 'jr_citation_livre'){
+            $sql = 'INSERT INTO jr_favori_livre(id_utilisateur,id_citation) VALUES (:u, :e)';
             require_once 'bdd.php';
             $insert = $co->prepare($sql);
             $insert->execute([

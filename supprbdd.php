@@ -3,7 +3,7 @@
         if(isset($_GET['id']) ){
             //on recupere $_GET['id']
             $id = $_GET['id'];
-            $sql = 'DELETE FROM proposition WHERE id = :id';
+            $sql = 'DELETE FROM jr_proposition WHERE id = :id';
             //Connexion a la bdd
             require 'bdd.php';
 

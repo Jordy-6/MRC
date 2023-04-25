@@ -41,7 +41,7 @@
 				<input type="password" name="mdp" id="mdp" placeholder="Mot de passe">
 				<br>
 				<input type="submit" value="Connexion" name="envoyer">
-				<p>Vous n'avez pas de compte ? <a href="inscription.php">Inscrivez-vous</a></p>
+				<p class="co">Vous n'avez pas de compte ? <a href="inscription.php">Inscrivez-vous</a></p>
 			</form>
 
 			
@@ -72,7 +72,7 @@
 		 if($erreur == false){
 			// Si j'ai reçu le bouton de soumission, c'est que le formulaire a été envoyé.
 			require_once 'bdd.php';
-			$sql = 'SELECT * FROM utilisateur WHERE email = :e';
+			$sql = 'SELECT * FROM jr_utilisateur WHERE email = :e';
 			$select = $co->prepare($sql);
 			$select->execute([
 				'e' => $_POST['email']

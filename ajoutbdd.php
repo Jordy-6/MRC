@@ -30,7 +30,7 @@ if( isset($_GET['id']) ){
     //on recupere $_GET['id']
     $id = $_GET['id'];
 
-    $sql = 'SELECT * FROM proposition WHERE id = :id';
+    $sql = 'SELECT * FROM jr_proposition WHERE id = :id';
     //Connexion a la bdd
     require_once 'bdd.php';
 
@@ -47,7 +47,7 @@ if( isset($_GET['id']) ){
         echo '<p>'.$utilisateur['citation'].'<br><br></p>';
         
         if( $utilisateur['categorie'] == "1"){
-            $sql = 'SELECT contenu FROM citation_film WHERE contenu = :c';
+            $sql = 'SELECT contenu FROM jr_citation_film WHERE contenu = :c';
             $select = $co->prepare($sql);
             $select->execute([
                 'c' => $utilisateur['citation']
@@ -96,7 +96,7 @@ if( isset($_GET['id']) ){
 
 
                         
-                        $sql = 'INSERT INTO citation_film(nom_film,personnage,minutes,contenu) VALUES (:n, :p, :m, :c)';
+                        $sql = 'INSERT INTO jr_citation_film(nom_film,personnage,minutes,contenu) VALUES (:n, :p, :m, :c)';
         
                         //Prepare l'insertion
                         $insert = $co->prepare($sql);
@@ -125,7 +125,7 @@ if( isset($_GET['id']) ){
 
 
         else if($utilisateur['categorie'] == "2"){
-            $sql = 'SELECT contenu FROM citation_serie WHERE contenu = :c';
+            $sql = 'SELECT contenu FROM jr_citation_serie WHERE contenu = :c';
             $select = $co->prepare($sql);
             $select->execute([
                 'c' => $utilisateur['citation']
@@ -177,7 +177,7 @@ if( isset($_GET['id']) ){
                     //S'il n'a pas d'erreurs
                     if($erreur == false){
                         
-                        $sql = 'INSERT INTO citation_serie(nom_serie,saison,episode,contenu,personnage) VALUES (:n, :s, :e, :c, :p)';
+                        $sql = 'INSERT INTO jr_citation_serie(nom_serie,saison,episode,contenu,personnage) VALUES (:n, :s, :e, :c, :p)';
         
                         //Prepare l'insertion
                         $insert = $co->prepare($sql);
@@ -206,7 +206,7 @@ if( isset($_GET['id']) ){
         }
 
         if( $utilisateur['categorie'] == "3"){
-            $sql = 'SELECT contenu FROM citation_livre WHERE contenu = :c';
+            $sql = 'SELECT contenu FROM jr_citation_livre WHERE contenu = :c';
             $select = $co->prepare($sql);
             $select->execute([
                 'c' => $utilisateur['citation']
@@ -254,7 +254,7 @@ if( isset($_GET['id']) ){
                     //S'il n'a pas d'erreurs
                     if($erreur == false){
                         
-                        $sql = 'INSERT INTO citation_livre(nom_livre,personnage,page,contenu) VALUES (:n, :p, :m, :c)';
+                        $sql = 'INSERT INTO jr_citation_livre(nom_livre,personnage,page,contenu) VALUES (:n, :p, :m, :c)';
         
                         //Prepare l'insertion
                         $insert = $co->prepare($sql);

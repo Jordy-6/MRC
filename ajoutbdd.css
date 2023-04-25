@@ -4,10 +4,9 @@
 }
 
 header{
-    display: flex;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black ;
-
+	display: flex;
+	padding-bottom: 20px;
+	box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 body{
@@ -45,10 +44,10 @@ form input{
 
 
 p{
-    margin-bottom: 20px;
+    margin-bottom: 2%;
     text-align: center;
     font-size: 23px;
-    margin-top: 15px;
+    margin-top: 5%;
 }
 
 
@@ -58,4 +57,50 @@ p{
 
 form{
     text-align: center;
+}
+
+@media (max-width: 1080px) {
+    .logo{
+        width:55%;
+    }
+
+    .lien{
+        width:45%;
+    }
+
+    img{
+        width: 25%;
+    }
+
+    p{
+        margin-top: 10%;
+    }
+}
+
+@media (max-width: 428px) {
+    .logo{
+        width:30%;
+    }
+
+    .lien{
+        width:70%;
+    }
+
+    img{
+        width: 70%;
+    }
+
+    p{
+        margin-top: 40%;
+    }
+
+    li{
+        font-size: 15px;
+        margin-right: 1.5%;
+    }
+
+    form input{
+        margin: 5px;
+        width: 45%;
+    }
 }

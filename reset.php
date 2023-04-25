@@ -75,7 +75,7 @@ if(isset($_POST['envoyer'])){
 
     if($erreur == false){
             require_once 'bdd.php';
-            $sql = 'SELECT * FROM utilisateur WHERE email = :e';
+            $sql = 'SELECT * FROM jr_utilisateur WHERE email = :e';
 			$select = $co->prepare($sql);
 			$select->execute([
 				'e' => $email
@@ -85,7 +85,7 @@ if(isset($_POST['envoyer'])){
                 if($mdp == $mdp2){
                     require_once 'bdd.php';
 
-                    $sql2 = 'UPDATE utilisateur SET mdp = :m  WHERE email = :e';
+                    $sql2 = 'UPDATE jr_utilisateur SET mdp = :m  WHERE email = :e';
                     $select2 = $co->prepare($sql2);
                     $select2->execute([
                         'm' => password_hash($mdp, PASSWORD_DEFAULT),

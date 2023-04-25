@@ -38,9 +38,9 @@
         require 'bdd.php';
 
         //pour favori_film
-        $sql = 'SELECT * FROM favori_film JOIN citation_film ON  favori_film.id_citation = citation_film.id
-                JOIN utilisateur ON  favori_film.id_utilisateur = utilisateur.id
-                WHERE utilisateur.email = :e';
+        $sql = 'SELECT * FROM jr_favori_film JOIN jr_citation_film ON jr_favori_film.id_citation = jr_citation_film.id
+                JOIN jr_utilisateur ON jr_favori_film.id_utilisateur = jr_utilisateur.id
+                WHERE jr_utilisateur.email = :e';
 
 
         $select = $co->prepare($sql);
@@ -54,9 +54,9 @@
 
 
         //favori_serie
-        $sql2 = 'SELECT * FROM favori_serie JOIN citation_serie ON  favori_serie.id_citation = citation_serie.id
-                JOIN utilisateur ON  favori_serie.id_utilisateur = utilisateur.id
-                WHERE utilisateur.email = :e';
+        $sql2 = 'SELECT * FROM jr_favori_serie JOIN jr_citation_serie ON jr_favori_serie.id_citation = jr_citation_serie.id
+                JOIN jr_utilisateur ON jr_favori_serie.id_utilisateur = jr_utilisateur.id
+                WHERE jr_utilisateur.email = :e';
 
 
         $select2 = $co->prepare($sql2);
@@ -68,9 +68,9 @@
 
 
         //favorie_livre
-        $sql3 = 'SELECT * FROM favori_livre JOIN citation_livre ON  favori_livre.id_citation = citation_livre.id
-        JOIN utilisateur ON  favori_livre.id_utilisateur = utilisateur.id
-        WHERE utilisateur.email = :e';
+        $sql3 = 'SELECT * FROM jr_favori_livre JOIN jr_citation_livre ON jr_favori_livre.id_citation = jr_citation_livre.id
+        JOIN jr_utilisateur ON jr_favori_livre.id_utilisateur = jr_utilisateur.id
+        WHERE jr_utilisateur.email = :e';
 
 
         $select3 = $co->prepare($sql3);
@@ -109,7 +109,7 @@
 
             echo '<p> - '.$u2['contenu'].' - '.$u2['personnage'].' - '.$u2['nom_serie'].' - '.$u2['saison'].' - '.$u2['episode'];
             ?>
-                - <a href="supprfav2.php?id=<?php echo $u2['id_fav']; ?>">Supprimer</a></p>
+                - <a href="supprfav2.php?id=<?php echo $u2['id_fav']; ?>">Supprimer le favori</a></p>
                 <br>
             <?php
         }                                                                       
@@ -124,7 +124,7 @@
             foreach($utilisateurs3 as $u3){
                  echo '<p> - '.$u3['contenu'].' - '.$u3['personnage'].' - '.$u3['nom_livre'].' - Chapitre '.$u3['page'];
                 ?>
-                     - <a href="supprfav3.php?id=<?php echo $u3['id_fav']; ?>">Supprimer</a></p>
+                     - <a href="supprfav3.php?id=<?php echo $u3['id_fav']; ?>">Supprimer le favori</a></p>
                     <br>
                 <?php
             }                                                                       

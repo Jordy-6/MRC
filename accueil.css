@@ -4,10 +4,8 @@
 }
 
 header{
-    display: flex;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black ;
-
+	display: flex;
+	box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 body{
@@ -23,7 +21,7 @@ li{
     display: flex;
     text-decoration: none;
     font-size: 20px;
-    margin-right: 20px;
+    margin-right: 1%;
 }
 
 
@@ -32,18 +30,18 @@ img{
     margin-top: 10px
 }
 
-h1{
-    padding-bottom: 20px;
-}
-
-
 p{
     margin-bottom: 20px;
 }
 
 
 .lien{
-    width: 50%;
+    width: 40%;
+    padding-right: 1%;
+}
+
+.logo{
+    width: 60%;
 }
 
 a{
@@ -51,22 +49,19 @@ a{
 }
 
 p{
-    font-size: 70px;
-    padding-top: 130px;
+    font-size: 60px;
+    padding-top: 10%;
     opacity: 0;
     filter: blur(4px);
     animation: fade-in 1s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
       
 }
 
-
-
 .citation{
     text-align: center;
 }
 
 span.perso{
-    
     font-size: 57px;
     opacity: 0;
     filter: blur(3px);
@@ -75,6 +70,11 @@ span.perso{
     
 }
 
+.fav{
+    font-size: 20px;
+    padding-bottom: 1%;
+    padding-top: 2%;
+}
 
 
 span.autres{
@@ -92,7 +92,64 @@ span.autres{
     }
 }
 
-.fav{
-    font-size: 18px;
-    
+@media (max-width: 1080px) {
+    p{
+        padding-top: 20%;
+    }
 }
+
+@media (max-width: 1044px) {
+    .lien{
+        width: 45%;
+    }
+
+    .logo{
+        width:55%;
+    }
+
+    p{
+        font-size: 50px;
+    }
+
+    span.perso{
+        font-size: 42px;
+    }
+    span.autres{
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 428px) {
+    .lien{
+        width: 75%;
+    }
+
+    li{
+        font-size: 15px;
+    }
+
+    .logo{
+        width:25%;
+    }
+    img{
+        width: 80%;
+    }
+
+    p{
+        font-size: 30px;
+        padding-top: 50%;
+    }
+
+    span.perso{
+        font-size: 23px;
+        width: 100%;
+    }
+    span.autres{
+        font-size: 17px;
+        width: 100%;
+        margin-left: 2%;
+    }
+
+   
+}
+
