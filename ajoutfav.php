@@ -12,7 +12,7 @@ session_start();
             ]);
             if($insert->rowCount()> 0){
                 echo '<p>Ajouté dans les favoris</p>';
-                echo $_SESSION['categorie'];
+                header('Location: favori.php');
             }
             else{
                 echo '<p>Erreur</p>';
@@ -30,14 +30,10 @@ session_start();
             ]);
             if($insert->rowCount()> 0){
                 echo '<p>Ajouté dans les favoris</p>';
-                echo $_SESSION['categorie'];
-                echo $_SESSION['c_id'];
+                header('Location: favori.php');
             }
             else{
                 echo '<p>Erreur</p>';
-                echo $_SESSION['categorie'];
-                echo $_SESSION['c_id'];
-
             }
         }
         else if($_SESSION['categorie'] == 'jr_citation_livre'){
@@ -50,13 +46,10 @@ session_start();
             ]);
                 if($insert->rowCount()> 0){
                     echo '<p>Ajouté dans les favoris</p>';
-                    echo $_SESSION['categorie'];
-                    echo $_SESSION['c_id'];
+                    header('Location: favori.php');
                 }
                 else{
                     echo '<p>Erreur</p>';
-                    echo $_SESSION['categorie'];
-                    echo $_SESSION['c_id'];
                 }
         }
     }

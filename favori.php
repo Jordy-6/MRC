@@ -18,7 +18,7 @@
                         <a href="accueil.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="connexion.php">Connexion</a>
+                        <a href="deconnexion.php">Déconnexion</a>
                     </li>
                     <li>
                         <a href="ajout.php">Ajouter votre citation</a>
@@ -88,9 +88,9 @@
                 
         foreach($utilisateurs as $u){
 
-            echo '<p> - '.$u['contenu'].' - '.$u['personnage'].' - '.$u['nom_film'];
+            echo '<p>"<span>'.$u['contenu'].'</span>" - '.$u['personnage'].' - '.$u['nom_film'];
             ?>
-                <a href="supprfav1.php?id=<?php echo $u['id_fav']; ?>">Supprimer le favori</a></p>
+                => <a href="supprfav1.php?id=<?php echo $u['id_fav']; ?>">Supprimer le favori</a></p>
                 <br>
             <?php
 
@@ -107,9 +107,9 @@
                 
         foreach($utilisateurs2 as $u2){
 
-            echo '<p> - '.$u2['contenu'].' - '.$u2['personnage'].' - '.$u2['nom_serie'].' - '.$u2['saison'].' - '.$u2['episode'];
+            echo '<p>"<span>'.$u2['contenu'].'</span>" - '.$u2['personnage'].' - '.$u2['nom_serie'].' - Saison : '.$u2['saison'].' -  Episode : '.$u2['episode'];
             ?>
-                - <a href="supprfav2.php?id=<?php echo $u2['id_fav']; ?>">Supprimer le favori</a></p>
+                => <a href="supprfav2.php?id=<?php echo $u2['id_fav']; ?>">Supprimer le favori</a></p>
                 <br>
             <?php
         }                                                                       
@@ -122,9 +122,9 @@
         echo '<h1 class="cate">LIVRES</h1>';
         if (!empty($utilisateurs3)){
             foreach($utilisateurs3 as $u3){
-                 echo '<p> - '.$u3['contenu'].' - '.$u3['personnage'].' - '.$u3['nom_livre'].' - Chapitre '.$u3['page'];
+                 echo '<p>"<span>'.$u3['contenu'].'</span>" - '.$u3['personnage'].' - '.$u3['nom_livre'].' - Chapitre '.$u3['page'];
                 ?>
-                     - <a href="supprfav3.php?id=<?php echo $u3['id_fav']; ?>">Supprimer le favori</a></p>
+                    => <a href="supprfav3.php?id=<?php echo $u3['id_fav']; ?>">Supprimer le favori</a></p>
                     <br>
                 <?php
             }                                                                       
